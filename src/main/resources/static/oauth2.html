@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="zh-CHS">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>英卡科技</title>
+</head>
+<body>
+    <p>OAuth2</p>
+
+    <script src="//cdn.incarcloud.com/lib/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            console.info("ready!");
+            var state = JSON.parse(new URL(window.location).searchParams.get("state"));
+            var target = new URL(state.url);
+
+            if(window.location.origin != target.origin){
+                var jump = target.origin+target.pathname+window.location.search;
+                window.location = jump;
+            }
+        });
+    </script>
+</body>
+</html>
