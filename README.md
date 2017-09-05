@@ -1,4 +1,6 @@
 # OAuth2开发辅助
+[![Build Status](https://travis-ci.org/InCar/x-forwarder.svg?branch=master)](https://travis-ci.org/InCar/x-forwarder)
+
 出于安全的原因,大部分的OAuth2限定可以跳转的目标域名.但这样给开发工作带来了困难,通常只能在限定的服务器上进行调试工作.
 
 本辅助工具的目的在于把调试工作从服务器代理到内网开发人员自己的开发机器.
