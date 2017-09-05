@@ -1,0 +1,17 @@
+.idea
+.gradle
+.classpath
+.project
+.settings
+
+build
+out
+bin
+
+application-*.yml
+GitVer.java
+gradle.properties
+
+*.iml
+*.log
+*.out
