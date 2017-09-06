@@ -9,18 +9,39 @@
     <title>英卡科技</title>
 </head>
 <body>
-    <p>OAuth2</p>
+    <p id="nickname">waiting...</p>
+    <p id="open_id"></p>
+    <img id="head" style="display:none">
 
     <script src="//cdn.incarcloud.com/lib/jquery/3.2.1/jquery.min.js"></script>
     <script>
         $(document).ready(function(){
-            console.info("ready!");
+            // check if state.url exists
             var state = JSON.parse(new URL(window.location).searchParams.get("state"));
-            var target = new URL(state.url);
+            if(!(state && state.url)) return;
 
+            var target = new URL(state.url);
             if(window.location.origin != target.origin){
+                // do jump
                 var jump = target.origin+target.pathname+window.location.search;
                 window.location = jump;
+            }
+            else{
+                // fetch user info
+                var code = (new URL(window.location)).searchParams.get("code");
+                $.ajax({
+                    method: "POST",
+                    url: "http://localhost:8080/user/qq",
+                    data: JSON.stringify({code: code}),
+                    contentType: "application/json",
+                    dataType: "json"
+                }).then(function(user){
+                    $("#nickname").text(user.nickname);
+                    $("#open_id").text(user.open_id);
+                    $("#head").attr("src", user.figureurl_qq_2);
+                    $("#head").show();
+                    console.info(user);
+                });
             }
         });
     </script>

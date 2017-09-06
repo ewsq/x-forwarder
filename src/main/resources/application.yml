@@ -1,2 +1,8 @@
 # Tomcat
 server.port: 8080
+
+# QQ
+qq:
+  appId: 101419871
+  appSecret: 2c66********************24bd
+  appCallback: http://api.incarcloud.com/3rd/qq
