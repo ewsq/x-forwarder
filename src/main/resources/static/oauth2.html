@@ -31,7 +31,7 @@
                 var code = (new URL(window.location)).searchParams.get("code");
                 $.ajax({
                     method: "POST",
-                    url: "http://localhost:8080/user/qq",
+                    url: "http://api.incarcloud.com/user/qq",
                     data: JSON.stringify({code: code}),
                     contentType: "application/json",
                     dataType: "json"
@@ -41,6 +41,9 @@
                     $("#head").attr("src", user.figureurl_qq_2);
                     $("#head").show();
                     console.info(user);
+                }, function(ex){
+                    $("#nickname").text(ex.responseText);
+                    console.error(ex.responseJSON);
                 });
             }
         });
